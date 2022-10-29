@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.DetailOrder"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <Label Text="Hóa đơn 001" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="0, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Row="0" x:Name="listItems" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout JustifyContent="SpaceBetween" Padding="10" AlignItems="Center">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Padding="0" HasShadow="False" IsClippedToBounds="True" >
+                                        <Image Aspect="AspectFill" Source="{Binding ImgUrl}" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="Center" />
+                                    </Frame>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                        <Label Text="{Binding Name}" TextColor="#808080" FontSize="18" LineBreakMode="TailTruncation" WidthRequest="200" />
+                                        <Label Text="200$" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="SL: 2" />
+                                    <Label TextColor="Black" FontSize="20" FontAttributes="Bold" Text="$400" />
+                                </StackLayout>
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Grid.Row="1" Spacing="20" Margin="10, 0">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
+                    <Label Text="Tổng cộng: " FontSize="16" TextColor="Black" />
+                    <Label Text="$740" FontSize="20" TextColor="Black"  FontAttributes="Bold"/>
+                </FlexLayout>
+                <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                    <Label Text="Tình trạng: " FontSize="16" TextColor="Black" />
+                    <!--Success: 22bb33-->
+                    <!--Delivering: FF3535-->
+                    <Label Text="Đang giao hàng" FontSize="18" TextColor="#FF3535"  FontAttributes="Bold"/>
+                </FlexLayout>
+                <Button Text="Quay lại" HorizontalOptions="Center" HeightRequest="50" x:Name="GoBack_btn" Clicked="GoBack_btn_Clicked" WidthRequest="250" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

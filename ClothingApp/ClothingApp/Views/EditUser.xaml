@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.EditUser"
+             xmlns:components="clr-namespace:ClothingApp.CustomComponent"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <Label Text="Thay đổi thông tin" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout Spacing="20">
+                <StackLayout>
+                    <Label Text="Tên" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <components:RoundedEntry Placeholder="Nhập tên" Text="Phạm Quốc Ấn" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Email" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <components:RoundedEntry Placeholder="Nhập email" Text="phaman410602@gmail.com" Keyboard="Email" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Số điện thoại" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <components:RoundedEntry Placeholder="Nhập số điện thoại" Text="0779581863" Keyboard="Numeric" />
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Địa chỉ nhận hàng" FontSize="16" FontAttributes="Bold" TextColor="Black" />
+                    <components:RoundedEntry Placeholder="Nhập địa chỉ" Text="Nghĩa Phương, Tư Nghĩa, Quảng Ngãi" />  
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Grid.Row="1" VerticalOptions="End" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Xác nhận" Clicked="Confirm_Clicked" x:Name="Confirm" BackgroundColor="#F77951" WidthRequest="150" CornerRadius="20" TextColor="White" />
+                <Button Text="Hủy" x:Name="Cancel" Clicked="Cancel_Clicked" BackgroundColor="#FFE9E3" WidthRequest="150" CornerRadius="20" TextColor="#F77951" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

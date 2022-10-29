@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.User"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+            <Label Text="Thông tin người dùng" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="0, 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout HorizontalOptions="Center" Spacing="10">
+                <Frame Padding="0" CornerRadius="100" HorizontalOptions="Center">
+                    <Image Source="user.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" Aspect="AspectFill" />
+                </Frame>
+                <Label Text="Phạm Quốc Ấn" FontSize="22" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center" />
+                <Label Text="Không code đời không nể" HorizontalOptions="Center" />
+            </StackLayout>
+            <Grid Grid.Row="1" Margin="10, 20" RowSpacing="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"  />
+                    <ColumnDefinition Width="*"  />
+                    <ColumnDefinition Width="*"  />
+                </Grid.ColumnDefinitions>
+                <Frame HorizontalOptions="FillAndExpand" Padding="10" Grid.Column="0" >
+                    <StackLayout>
+                        <Frame Padding="10" CornerRadius="50" HasShadow="False" BackgroundColor="#FEF6F3" HorizontalOptions="Center">
+                            <Image Source="bag_color.png" WidthRequest="30" HeightRequest="30" />
+                        </Frame>
+                        <Label Text="Đơn hàng" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                        <Label Text="10+" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame HorizontalOptions="FillAndExpand" Padding="10" Grid.Column="1">
+                    <StackLayout>
+                        <Frame Padding="10" CornerRadius="50" HasShadow="False" BackgroundColor="#FEF6F3" HorizontalOptions="Center">
+                            <Image Source="discount_color.png" WidthRequest="30" HeightRequest="30" />
+                        </Frame>
+                        <Label Text="Mã giảm giá" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                        <Label Text="5" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame HorizontalOptions="FillAndExpand" Padding="10" Grid.Column="2">
+                    <StackLayout>
+                        <Frame Padding="10" CornerRadius="50" HasShadow="False" BackgroundColor="#FEF6F3" HorizontalOptions="Center">
+                            <Image Source="star_color.png" WidthRequest="30" HeightRequest="30" />
+                        </Frame>
+                        <Label Text="Đánh giá" HorizontalTextAlignment="Center" FontAttributes="Bold" />
+                        <Label Text="10+" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+            </Grid>
+            <StackLayout Grid.Row="2" Margin="10, 0">
+                <Label Text="Personal Information" FontSize="20" TextColor="Black" FontAttributes="Bold" Margin="0,0,0,10" />
+                <Frame BorderColor="#F4F4F6" HasShadow="False" CornerRadius="10">
+                    <Grid ColumnSpacing="30" RowSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Tên:" FontSize="16" />
+                        <Label Text="Phạm Quốc Ấn" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Email:" FontSize="16" Grid.Row="1" />
+                        <Label Text="chris@gmail.com" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Mật khẩu:" FontSize="16" Grid.Row="2" />
+                        <Label Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="End">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Bấm đây để đổi mật khẩu"
+                                    TextColor="#7E7E7E"
+                                      FontSize="16"
+                                      >
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding TapCommand}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label Text="Nơi ở:" FontSize="16" Grid.Row="3" />
+                        <Label Text="Nghĩa Phương, Tư Nghĩa, Quảng Ngãi" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Số điện thoại:" FontSize="16" Grid.Row="4" />
+                        <Label Text="+0123456789" LineBreakMode="TailTruncation" Grid.Row="4" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Sửa" x:Name="Edit" BackgroundColor="#F77951" WidthRequest="150" CornerRadius="20" TextColor="White" Clicked="Edit_Clicked" />
+                <Button Text="Đăng xuất" x:Name="Logout" Clicked="Logout_Clicked" BackgroundColor="#ED5E68" WidthRequest="150" CornerRadius="20" TextColor="White" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

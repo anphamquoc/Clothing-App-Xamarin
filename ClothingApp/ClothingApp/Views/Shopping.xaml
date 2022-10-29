@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.Shopping"
+             Shell.BackgroundColor="#F77951"
+             >
+    <Shell.TitleView>
+        <Label Text="Tất cả sản phẩm" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="30" BorderColor="#EEEEF0">
+                <SearchBar />
+            </Frame>
+            <Label Text="Tìm kiếm sản phẩm ..." FontSize="20" FontAttributes="Bold" TextColor="Black" />
+            <CollectionView x:Name="navigationCollection" ItemsLayout="VerticalGrid, 2" SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame Padding="5" HasShadow="True" BackgroundColor="#FBFBFD" Margin="5" IsClippedToBounds="True" CornerRadius="10">
+                                    <StackLayout>
+                                    <Frame HasShadow="False" Padding="0" CornerRadius="10">
+                                        <Image Source="{Binding ImgUrl}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
+                                    </Frame>
+                                    <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="#808080" FontSize="18" LineBreakMode="TailTruncation" />
+                                    <Label Text="150$" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

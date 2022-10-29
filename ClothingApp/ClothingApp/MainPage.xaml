@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:ClothingApp.Views"
+             x:Class="ClothingApp.MainPage"
+       >
+
+    <TabBar Route="Login">
+        <ShellContent ContentTemplate="{DataTemplate views:Login}" />
+    </TabBar>
+    <TabBar Route="Register">
+        <ShellContent ContentTemplate="{DataTemplate views:Register}" />
+    </TabBar>
+    <TabBar Route="Checkout">
+        <ShellContent ContentTemplate="{DataTemplate views:Checkout}" />
+    </TabBar>
+    <TabBar Route="CheckoutSuccess">
+        <ShellContent ContentTemplate="{DataTemplate views:CheckoutSuccess}" />
+    </TabBar>
+    <TabBar Route="ProductInformation">
+        <ShellContent ContentTemplate="{DataTemplate views:ProductInformation}" />
+    </TabBar>
+    <TabBar Route="DetailOrder">
+        <ShellContent ContentTemplate="{DataTemplate views:DetailOrder}" />
+    </TabBar>
+    <TabBar Route="EditUser">
+        <ShellContent ContentTemplate="{DataTemplate views:EditUser}" />
+    </TabBar>
+    <TabBar Route="ChangePassword">
+        <ShellContent ContentTemplate="{DataTemplate views:ChangePassword}" />
+    </TabBar>
+    <!--<TabBar Route="Home">-->
+    <TabBar Title="My Tab App" Route="" Shell.FlyoutBehavior="Disabled" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Home}" Icon="home.png" Route="Home" Title="Trang chủ" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Shopping}" Icon="shopping.png" Route="Shopping" Title="Mua sắm" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Cart}" Icon="cart.png" Route="Cart" Title="Giỏ hàng" />
+        <!--<ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Home}" Icon="heart.png" Route="Favourite" />-->
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Order}" Icon="order_icon.png" Route="Order" Title="Đơn hàng" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:User}" Icon="user.png" Route="User" Title="Người dùng" />
+    </TabBar>
+    <!--</TabBar>-->
+    <!--<FlyoutItem Title="Clothing Shop" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Login}" Title="Login" />
+        
+    </FlyoutItem>-->
+
+</Shell>

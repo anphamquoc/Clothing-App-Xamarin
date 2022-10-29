@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.Checkout"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <Label Text="Thanh toán" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="10" RowSpacing="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackLayout>
+                <Label Text="Delivery Address" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+                <Frame BorderColor="#F4F4F6" HasShadow="False" CornerRadius="10">
+                    <Grid ColumnSpacing="30" RowSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Tên:" FontSize="16" />
+                        <Label Text="Phạm Quốc Ấn" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Email:" FontSize="16" Grid.Row="1" />
+                        <Label Text="chris@gmail.com" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Quote:" FontSize="16" Grid.Row="2" />
+                        <Label Text="Không code đời không nể" Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Nơi ở:" FontSize="16" Grid.Row="3" />
+                        <Label Text="Nghĩa Phương, Tư Nghĩa, Quảng Ngãi" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Số điện thoại:" FontSize="16" Grid.Row="4" />
+                        <Label Text="+0123456789" LineBreakMode="TailTruncation" Grid.Row="4" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout Grid.Row="1">
+                <Label Text="Thông tin hóa đơn" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+                <Frame BorderColor="#F4F4F6" HasShadow="False" CornerRadius="10">
+                    <Grid ColumnSpacing="30" RowSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Label Text="Phí vận chuyển:" FontSize="16" />
+                        <Label Text="$50" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Giá tiền sản phẩm:" FontSize="16" Grid.Row="1" />
+                        <Label Text="$740" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <BoxView HeightRequest="1" Color="#F4F4F4" Grid.Row="2" Grid.ColumnSpan="2"/>
+                        <Label Text="Tổng cộng:" FontSize="16" Grid.Row="3" />
+                        <Label Text="$790" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End">
+                <Button Text="Thanh toán" HorizontalOptions="Center" HeightRequest="50" x:Name="Checkout_Btn" Clicked="Checkout_Btn_Clicked" WidthRequest="170" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
+                <Button Text="Quay lại" HorizontalOptions="Center" x:Name="BackToHome_btn" Clicked="BackToHome_btn_Clicked" HeightRequest="50" WidthRequest="150" CornerRadius="60"  BackgroundColor="#FFE9E3" TextColor="#F77951" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

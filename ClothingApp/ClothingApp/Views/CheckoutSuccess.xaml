@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.CheckoutSuccess"
+             Shell.NavBarIsVisible="False">
+    <ContentPage.Content>
+        <StackLayout Spacing="50" VerticalOptions="CenterAndExpand" Margin="0, 0, 0, 50">
+            <Image Source="success_icon.png" Aspect="AspectFill" HorizontalOptions="Center" VerticalOptions="Center" />
+            <StackLayout HorizontalOptions="Center">
+                <Label FontAttributes="Bold" Text="Thành công!!!" HorizontalTextAlignment="Center" FontSize="20" TextColor="Black" />
+                <Label Text="Đơn hàng của bạn đã được thanh toán thành công." HorizontalTextAlignment="Center" FontSize="16" TextColor="#7E7E7E" />
+            </StackLayout>
+            <StackLayout Spacing="10">
+                <Button Text="Xem hóa đơn" Clicked="OrderDetail_Clicked" x:Name="OrderDetail" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
+                <Button Text="Trở về trang chủ" x:Name="BackToHome_btn" Clicked="BackToHome_btn_Clicked" HorizontalOptions="Center" HeightRequest="50" WidthRequest="250" CornerRadius="60" BackgroundColor="#FFE9E3" TextColor="#F77951" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

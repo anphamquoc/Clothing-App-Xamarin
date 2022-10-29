@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.Cart"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <Label Text="Giỏ hàng" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="0, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <ListView Grid.Row="0" x:Name="listItems" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout JustifyContent="SpaceBetween" Padding="10">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Padding="0" HasShadow="False" IsClippedToBounds="True" >
+                                        <Image Aspect="AspectFill" Source="{Binding ImgUrl}" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="Center" />
+                                    </Frame>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                        <Label Text="{Binding Name}" TextColor="#808080" FontSize="18" LineBreakMode="TailTruncation" WidthRequest="120" />
+                                        <Label Text="200$" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Frame VerticalOptions="Center" Padding="10" CornerRadius="10" BackgroundColor="#FEEBE5">
+                                        <Image Source="subtract_icon" WidthRequest="10" HeightRequest="10" />
+                                    </Frame>
+                                    <Label Text="1" VerticalOptions="Center" />
+                                    <Frame Padding="10" VerticalOptions="Center" CornerRadius="10" BackgroundColor="#FEEBE5">
+                                        <Image Source="plus_icon" WidthRequest="10" HeightRequest="10" />
+                                    </Frame>
+                                </StackLayout>
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Grid.Row="1" Spacing="20" Margin="10, 0">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
+                    <Label Text="Tổng cộng: " FontSize="16" TextColor="Black" />
+                    <Label Text="$740" FontSize="20" TextColor="Black"  FontAttributes="Bold"/>
+                </FlexLayout>
+                <Button Text="Tới trang thanh toán" HorizontalOptions="Center" HeightRequest="50" x:Name="Checkout_Btn" Clicked="Checkout_Btn_Clicked" WidthRequest="250" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
