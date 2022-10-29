@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Data.SqlClient;
 
 namespace ClothingApp
 {
@@ -13,6 +14,7 @@ namespace ClothingApp
         public MainPage()
         {
             InitializeComponent();
+
         }
     }
 }

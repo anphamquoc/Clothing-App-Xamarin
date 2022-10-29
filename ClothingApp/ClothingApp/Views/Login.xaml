@@ -19,10 +19,10 @@
             <StackLayout Grid.Row="1" Padding="30, 0">
                 <StackLayout Spacing="10">
                     <StackLayout>
-                        <components:RoundedEntry Placeholder="Tên đăng nhập" FontSize="16" HeightRequest="50" />
+                        <components:RoundedEntry x:Name="username" Placeholder="Tên đăng nhập" FontSize="16" HeightRequest="50" />
                     </StackLayout>
                     <StackLayout>
-                        <components:RoundedEntry Placeholder="Mật khẩu" FontSize="16" HeightRequest="50" IsPassword="True" />
+                        <components:RoundedEntry x:Name="password" Placeholder="Mật khẩu" FontSize="16" HeightRequest="50" IsPassword="True" />
                     </StackLayout>
                 </StackLayout>
                 <Frame Padding="0" HasShadow="False" CornerRadius="20" Margin="0, 10, 0, 0">
