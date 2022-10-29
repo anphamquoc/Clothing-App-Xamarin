@@ -41,6 +41,7 @@
     <!--</TabBar>-->
     <!--<FlyoutItem Title="Clothing Shop" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Login}" Title="Login" />
+    
         
     </FlyoutItem>-->
 
