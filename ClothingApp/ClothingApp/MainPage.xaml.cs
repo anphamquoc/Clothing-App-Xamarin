@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Data.SqlClient;
+using ClothingApp.Model;
 
 namespace ClothingApp
 {
@@ -14,6 +15,10 @@ namespace ClothingApp
         public MainPage()
         {
             InitializeComponent();
+            //Connect connect = new Connect();
+            //SqlConnection sqlConnection = connect.Connection;
+
+            //sqlConnection.Open();
 
         }
     }

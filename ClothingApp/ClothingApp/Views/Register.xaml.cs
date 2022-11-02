@@ -18,5 +18,10 @@ namespace ClothingApp.Views
             InitializeComponent();
             this.BindingContext = this;
         }
+
+        private async void Register_btn_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//Home");
+        }
     }
 }
