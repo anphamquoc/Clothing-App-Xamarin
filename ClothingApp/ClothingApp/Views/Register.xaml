@@ -5,7 +5,7 @@
              xmlns:components="clr-namespace:ClothingApp.CustomComponent"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <!--<Grid VerticalOptions="CenterAndExpand">
+        <Grid VerticalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"  />
             </Grid.ColumnDefinitions>
@@ -39,6 +39,6 @@
                     </Label.FormattedText>
                 </Label>
             </StackLayout>
-        </Grid>-->
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
