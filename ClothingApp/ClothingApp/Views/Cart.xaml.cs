@@ -20,7 +20,9 @@ namespace ClothingApp.Views
                 new HomeItem("dress_01.jfif", "Đầm đẹp đón xế"),
                 new HomeItem("dress_02.jfif", "Đầm quá đẹp luôn"),
                 new HomeItem("dress_03.jfif", "Đầm này quá chất"),
-                new HomeItem("dress_04.jfif", "Đầm kia khỏi chê")
+                new HomeItem("dress_04.jfif", "Đầm kia khỏi chê"),
+                new HomeItem("dress_05.jfif", "Đầm này quá chất"),
+                new HomeItem("dress_06.jfif", "Đầm kia khỏi chê")
             };
 
             listItems.ItemsSource = homeItems;

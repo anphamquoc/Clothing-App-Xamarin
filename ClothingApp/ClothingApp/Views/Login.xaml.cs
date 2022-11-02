@@ -24,30 +24,30 @@ namespace ClothingApp.Views
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            string Username = username.Text;
-            string Password = password.Text;
+            //string Username = username.Text;
+            //string Password = password.Text;
 
-            Connect connect = new Connect();
-            SqlConnection sqlConnection = connect.Connection;
+            //Connect connect = new Connect();
+            //SqlConnection sqlConnection = connect.Connection;
 
-            sqlConnection.Open();
+            //sqlConnection.Open();
 
-            string queryString = $"select * from dbo.users where username='{Username}' and password='{Password}'";
+            //string queryString = $"select * from dbo.users where username='{Username}' and password='{Password}'";
 
-            SqlCommand sqlCommand = new SqlCommand(queryString, sqlConnection);
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            int Count = 0;
+            //SqlCommand sqlCommand = new SqlCommand(queryString, sqlConnection);
+            //SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            //int Count = 0;
 
-            while(sqlDataReader.Read())
-            {
-                Count += 1;
-            }
+            //while(sqlDataReader.Read())
+            //{
+            //    Count += 1;
+            //}
 
-            if(Count == 0)
-            {
-                await DisplayAlert("Thông báo", "Tài khoản hoặc mật khẩu sai", "OK");
-                return;
-            }
+            //if(Count == 0)
+            //{
+            //    await DisplayAlert("Thông báo", "Tài khoản hoặc mật khẩu sai", "OK");
+            //    return;
+            //}
 
             await Shell.Current.GoToAsync("//Home");
         }
