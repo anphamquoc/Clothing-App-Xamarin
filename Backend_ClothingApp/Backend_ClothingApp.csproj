@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>00b52323-b943-4cc3-a877-74bedb6fd403</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

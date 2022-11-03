@@ -60,8 +60,7 @@ namespace Backend_ClothingApp.Migrations
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(32)
-                        .HasColumnType("nvarchar(32)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
@@ -75,6 +74,9 @@ namespace Backend_ClothingApp.Migrations
                         .HasColumnType("nvarchar(32)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("Username")
+                        .IsUnique();
 
                     b.ToTable("User");
                 });

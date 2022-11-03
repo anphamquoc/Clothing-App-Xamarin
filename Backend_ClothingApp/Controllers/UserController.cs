@@ -6,6 +6,9 @@ using Backend_ClothingApp.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Backend_ClothingApp.Models;
+using Backend_ClothingApp.Helpers;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Backend_ClothingApp.Controllers
 {
@@ -13,6 +16,7 @@ namespace Backend_ClothingApp.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        private readonly SecurePasswordHasher securePasswordHasher = new SecurePasswordHasher();
         private readonly MyDbContext _context;
 
         public UserController(MyDbContext context)
@@ -24,7 +28,10 @@ namespace Backend_ClothingApp.Controllers
         public IActionResult GetAll()
         {
             List<User> users = _context.Users.ToList();
-            return Ok(users);
+            return Ok(new ApiResponse { 
+                Success = true,
+                Data = users
+            });
         }
 
         [HttpGet("{id}")]
@@ -45,18 +52,36 @@ namespace Backend_ClothingApp.Controllers
         {
             try
             {
-                User user = _context.Users.SingleOrDefault(user => user.Username == userBody.Username && user.Password == userBody.Password);
+                User user = _context.Users.SingleOrDefault(user => user.Username == userBody.Username);
 
                 if(user == null)
                 {
-                    return NotFound("Sai tài khoản hoặc mật khẩu");
+                    return NotFound(new { 
+                        Success = false,
+                        Message = "Sai tài khoản"
+                    });
                 }
 
-                return Ok(user);
+                if (!securePasswordHasher.Verify(userBody.Password, user.Password))
+                {
+                    return StatusCode(StatusCodes.Status404NotFound ,new
+                    {
+                        Success = false,
+                        Message = "Sai mật khẩu"
+                    });
+                }
+
+                return Ok(new { 
+                    Success = true,
+                    Data = user
+                });
             }
             catch(Exception ex)
             {
-                return BadRequest();
+                return BadRequest(new ApiResponse {
+                    Success = false,
+                    Message = ex.Message
+                });
             }
         }
 
@@ -69,22 +94,34 @@ namespace Backend_ClothingApp.Controllers
 
                 if (user != null)
                 {
-                    return BadRequest("Đã có người dùng với tên đăng nhập này");
+                    return BadRequest(new ApiResponse
+                    {
+                        Success = true,
+                        Message = "Đã có người dùng với tên đăng nhập này"
+                    });
                 }
 
-                user = new User{
+                string hashPassword = securePasswordHasher.Hash(userBody.Password);
+
+                user = new User {
                     Username = userBody.Username,
-                    Password = userBody.Password
+                    Password = hashPassword
                 };
 
                 _context.Users.Add(user);
                 _context.SaveChanges();
 
-                return Ok(userBody);
+                return Ok(new {
+                    Success = true,
+                    Data = user
+                });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                return BadRequest(ex);
+                return BadRequest(new ApiResponse{ 
+                    Success = false,
+                    Message = ex.Message
+                });
             }
         }
 
@@ -97,10 +134,11 @@ namespace Backend_ClothingApp.Controllers
 
                 if (user == null)
                 {
-                    return BadRequest($"Không có user với id={id} này");
+                    return BadRequest(new ApiResponse {
+                        Success = false,
+                        Message = $"Không có user với id={id} này"
+                    });
                 }
-
-                Console.WriteLine(1);
 
                 user.PhoneNumber = userBody.PhoneNumber;
                 user.Address = userBody.Address;
@@ -108,7 +146,11 @@ namespace Backend_ClothingApp.Controllers
 
                 _context.SaveChanges();
 
-                return Ok(user);
+                return Ok(new ApiResponse
+                { 
+                    Success = true,
+                    Data = user
+                });
             }
             catch(Exception ex)
             {

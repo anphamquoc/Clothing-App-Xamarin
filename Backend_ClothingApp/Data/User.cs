@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend_ClothingApp.Data
 {
     [Table("User")]
+    [Index(nameof(Username), IsUnique=true)]
     public class User
     {
         [Key]
@@ -19,9 +21,6 @@ namespace Backend_ClothingApp.Data
         public string Username { get; set; }
 
         [Required]
-        [MinLength(6, ErrorMessage = "Mật khẩu phải có ít nhất 6 kí tự")]
-        [MaxLength(32, ErrorMessage = "Mật khẩu có nhiều nhất 32 kí tự")]
-        [RegularExpression("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{6,15}$", ErrorMessage = "Mật khẩu phải có một kí tự thường, một số và một kí tự hoa")]
         public string Password { get; set; }
 
         [RegularExpression("admin|user")]
