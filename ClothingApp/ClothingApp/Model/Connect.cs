@@ -17,7 +17,7 @@ namespace ClothingApp.Model
             //string srvrpassword = environmentVariable.srvrpassword; // your password of SQL Server
             //string sqlconn = $"Data Source={srvrname};Initial Catalog={srvrdbname};User ID={srvrusername};Password={srvrpassword}";
             //return sqlconn;
-            return "kkss";
+            return "aaa";
         }
         public SqlConnection Connection
         {
