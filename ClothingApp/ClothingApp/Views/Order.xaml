@@ -2,10 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ClothingApp.Views.Order"
+             xmlns:helpers="clr-namespace:ClothingApp.Helpers"
              Shell.BackgroundColor="#F77951">
     <Shell.TitleView>
         <Label Text="Giao dịch gần đây" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
     </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:ChangeColorConverter x:Key="changeColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ListView Grid.Row="0" x:Name="listItems" RowHeight="100" ItemTapped="listItems_ItemSelected">
             <ListView.ItemTemplate>
@@ -18,18 +24,18 @@
                             </Grid.ColumnDefinitions>
                             <StackLayout VerticalOptions="Center" Orientation="Horizontal">
                                 <Frame Padding="0">
-                                    <Image Source="dress_01.jfif" WidthRequest="100" Aspect="AspectFill" />
+                                    <Image Source="{Binding OrderDetails[0].Product.ImgUrl}" WidthRequest="100" Aspect="AspectFill" />
                                 </Frame>
                                 <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Start">
-                                    <Label Text="{Binding Name}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
-                                    <Label Text="{Binding Date}" TextColor="#808080" FontSize="14" LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding FullName}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                    <Label Text="{Binding CreatedAt}" TextColor="#808080" FontSize="14" LineBreakMode="TailTruncation" />
                             </StackLayout>
                             </StackLayout>
                             <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="End">
-                                <Label Text="200$" FontSize="20" FontAttributes="Bold" HorizontalOptions="End" TextColor="Black" />
+                                <Label Text="{Binding Total, StringFormat='{0:#,0.#}'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="End" TextColor="Black" />
                                 <!--Success: 22bb33-->
                                 <!--Delivering: FF3535-->
-                                <Label Text="{Binding Status}" HorizontalOptions="End" FontAttributes="Bold" TextColor="#ff3535"  />
+                                <Label Text="{Binding Status}" HorizontalOptions="End" FontAttributes="Bold" TextColor="{Binding Status, Converter={StaticResource changeColorConverter}}"  />
                             </StackLayout>
                         </Grid>
                     </ViewCell>

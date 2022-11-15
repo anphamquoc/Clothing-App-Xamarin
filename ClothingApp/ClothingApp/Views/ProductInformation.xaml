@@ -4,7 +4,17 @@
              x:Class="ClothingApp.Views.ProductInformation"
              Shell.BackgroundColor="#F77951">
     <Shell.TitleView>
-        <Label Text="Đầm quá đẹp" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Image Source="arrow_left.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="TapGestureRecognizer_Tapped"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label Text="Đầm quá đẹp" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 40, 0"  VerticalTextAlignment="Center" x:Name="titlePage"/>
+        </StackLayout>
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid Margin="0, 20, 0, 0">
@@ -13,22 +23,22 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Frame Padding="0" HasShadow="False">
-                <Image Source="dress_01.jfif" Aspect="AspectFit" />
+                <Image x:Name="image" Source="dress_01.jfif" Aspect="AspectFit" />
             </Frame>
             <Frame Grid.Row="1" Padding="20" CornerRadius="40" BorderColor="#FFE9E3">
                 <Grid RowSpacing="20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <StackLayout Orientation="Horizontal" >
-                        <Label Text="Đầm này quá đẹp" FontSize="20" TextColor="Black" FontAttributes="Bold" />
-                        <Label Text="$175" HorizontalOptions="EndAndExpand" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                        <Label x:Name="name" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                        <Label x:Name="price" HorizontalOptions="EndAndExpand" FontSize="20" TextColor="Black" FontAttributes="Bold" />
                     </StackLayout>
-                    <Label Grid.Row="1" Text="Sandro là thương hiệu toàn cầu đi tiên phong trong phân khúc thời trang cao cấp. Phân phối chính hãng tại Việt Nam. Mua sắm online dễ dàng cùng nhiều ưu đãi hấp dẫn. Miễn phí giao hàng online. Thanh toán an toàn. Hỗ trợ đổi hàng. Hàng chính hãng. Giao hàng toàn quốc." TextColor="#808080"/>
+                    <Label Grid.Row="1" x:Name="description" TextColor="#808080"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End">
-                        <Button Text="Thêm vào giỏ hàng" HorizontalOptions="Center" HeightRequest="50" x:Name="Checkout_Btn" WidthRequest="170" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
+                        <Button Text="Thêm vào giỏ hàng" HorizontalOptions="Center" HeightRequest="50" x:Name="AddToCart_btn" WidthRequest="170" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" Clicked="AddToCart_btn_Clicked" />
                         <Button Text="Quay lại" HorizontalOptions="Center" x:Name="BackToHome_btn" Clicked="BackToHome_btn_Clicked" HeightRequest="50" WidthRequest="150" CornerRadius="60"  BackgroundColor="#FFE9E3" TextColor="#F77951" />
                     </StackLayout>
                 </Grid>
