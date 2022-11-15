@@ -10,10 +10,10 @@
     <ContentPage.Content>
         <StackLayout Padding="20">
             <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="30" BorderColor="#EEEEF0">
-                <SearchBar />
+                <SearchBar x:Name="SearchBar" TextChanged="SearchBar_TextChanged" Placeholder="Tìm kiếm sản phẩm" />
             </Frame>
-            <Label Text="Tìm kiếm sản phẩm ..." FontSize="20" FontAttributes="Bold" TextColor="Black" />
-            <CollectionView x:Name="navigationCollection" ItemsLayout="VerticalGrid, 2" SelectionMode="Single">
+            <Label x:Name="searchResult" Text="Tất cả sản phẩm" FontSize="20" FontAttributes="Bold" TextColor="Black" />
+            <CollectionView x:Name="navigationCollection" ItemsLayout="VerticalGrid, 2" SelectionMode="Single" SelectionChanged="navigationCollection_SelectionChanged">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView>
@@ -23,7 +23,7 @@
                                         <Image Source="{Binding ImgUrl}" HeightRequest="150" WidthRequest="150" Aspect="AspectFill" />
                                     </Frame>
                                     <Label Text="{Binding Name}" HorizontalOptions="Center" TextColor="#808080" FontSize="18" LineBreakMode="TailTruncation" />
-                                    <Label Text="150$" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                                    <Label Text="{Binding Price, StringFormat='{0:#,0.#}'}" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" />
                                 </StackLayout>
                             </Frame>
                         </ContentView>
