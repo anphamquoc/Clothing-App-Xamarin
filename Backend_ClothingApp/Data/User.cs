@@ -15,12 +15,12 @@ namespace Backend_ClothingApp.Data
         [Key]
         public Guid id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên người dùng phải có")]
         [MinLength(6, ErrorMessage = "Tên người dùng phải có ít nhất 6 kí tự")]
         [MaxLength(32, ErrorMessage = "Tên người dùng có nhiều nhất 32 kí tự")]
         public string Username { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mật khẩu phải có")]
         public string Password { get; set; }
 
         [RegularExpression("admin|user")]
@@ -28,12 +28,27 @@ namespace Backend_ClothingApp.Data
 
         public string Address { get; set; }
 
+        public string FullName { get; set; }
+
         [Phone(ErrorMessage = "Phải là số điện thoại")]
         public string PhoneNumber { get; set; }
 
         [EmailAddress(ErrorMessage = "Phải là email")]
         public string Email { get; set; }
 
-        public virtual ICollection<Product> Products { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public DateTime CreatedAt { get; set; }
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+        public DateTime UpdatedAt { get; set; }
+
+        public virtual ICollection<Order> Orders { get; set; }
+        
+        public virtual Cart Cart { get; set; }
+
+        public User()
+        {
+            Orders = new HashSet<Order>();
+        }
     }
 }

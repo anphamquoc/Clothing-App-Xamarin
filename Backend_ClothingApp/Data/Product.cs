@@ -13,19 +13,22 @@ namespace Backend_ClothingApp.Data
         [Key]   
         public Guid id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên sản phẩm phải có")]
         [MinLength(10, ErrorMessage = "Tên sản phẩm ít nhất phải có 10 kí tự")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mô tả sản phẩm phải có")]
         [MinLength(10, ErrorMessage = "Mô tả ít nhất phải có 10 kí tự")]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Hình ảnh phải có")]
+        public string ImgUrl { get; set; }
+
+        [Required(ErrorMessage = "Giá cả phải có")]
         public long Price { get; set; }
 
-        public Guid UserId { get; set; }
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
+        public virtual ICollection<CartDetail> CartDetail { get; set; }
+
     }
 }
