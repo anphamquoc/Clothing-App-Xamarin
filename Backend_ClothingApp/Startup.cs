@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Backend_ClothingApp.Data;
+using Backend_ClothingApp.Helpers;
+using Backend_ClothingApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,10 +33,34 @@ namespace Backend_ClothingApp
 
             services.AddControllers();
 
+            //Connect with sql server database
             services.AddDbContext<MyDbContext>(option =>
             {
                 option.UseSqlServer(Configuration.GetConnectionString("MyDB"));
+                option.UseLazyLoadingProxies();
             });
+
+            //Add scope with interface
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IProductRepository, ProductRepository> ();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<ICartDetailRepository, CartDetailRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderDetailRespository, OrderDetailRepository>();
+
+            //Custom API Response
+            services.AddMvcCore().ConfigureApiBehaviorOptions(options => {
+                options.InvalidModelStateResponseFactory = (errorContext) =>
+                {
+                    var errors = errorContext.ModelState.Values.SelectMany(e => e.Errors.Select(m => new
+                    {
+                        ErrorMessage = m.ErrorMessage
+                    })).ToList();
+                    var result = new ApiResponse(false, errors[0].ErrorMessage);
+                    return new BadRequestObjectResult(result);
+                };
+            });
+
 
             services.AddSwaggerGen(c =>
             {
