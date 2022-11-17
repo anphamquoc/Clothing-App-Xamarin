@@ -20,22 +20,31 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Xóa" Command="{Binding Path=BindingContext.DeleteProductFromCartCommand, Source={x:Reference listItems}}" CommandParameter="{Binding .}" />
+                            </ViewCell.ContextActions>
                             <FlexLayout JustifyContent="SpaceBetween" Padding="10">
                                 <StackLayout Orientation="Horizontal">
                                     <Frame Padding="0" HasShadow="False" IsClippedToBounds="True" >
-                                        <Image Aspect="AspectFill" Source="{Binding ImgUrl}" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="Center" />
+                                        <Image Aspect="AspectFill" Source="{Binding Product.ImgUrl}" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="Center" />
                                     </Frame>
                                     <StackLayout Orientation="Vertical" VerticalOptions="Center">
-                                        <Label Text="{Binding Name}" TextColor="#808080" FontSize="18" LineBreakMode="TailTruncation" WidthRequest="120" />
-                                        <Label Text="200$" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                        <Label Text="{Binding Product.Name}" TextColor="#808080" FontSize="18" LineBreakMode="TailTruncation" WidthRequest="120" />
+                                        <Label Text="{Binding Product.Price, StringFormat='{0:#,0.#}'}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
                                     </StackLayout>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                     <Frame VerticalOptions="Center" Padding="10" CornerRadius="10" BackgroundColor="#FEEBE5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.DecreaseQuantityCommand, Source={x:Reference listItems}}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
                                         <Image Source="subtract_icon" WidthRequest="10" HeightRequest="10" />
                                     </Frame>
-                                    <Label Text="1" VerticalOptions="Center" />
+                                    <Label Text="{Binding Quantity}" VerticalOptions="Center" />
                                     <Frame Padding="10" VerticalOptions="Center" CornerRadius="10" BackgroundColor="#FEEBE5">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.IncreaseQuantityCommand, Source={x:Reference listItems}}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
                                         <Image Source="plus_icon" WidthRequest="10" HeightRequest="10" />
                                     </Frame>
                                 </StackLayout>
@@ -48,7 +57,7 @@
             <StackLayout Grid.Row="1" Spacing="20" Margin="10, 0">
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
                     <Label Text="Tổng cộng: " FontSize="16" TextColor="Black" />
-                    <Label Text="$740" FontSize="20" TextColor="Black"  FontAttributes="Bold"/>
+                    <Label x:Name="total" FontSize="20" TextColor="Black"  FontAttributes="Bold"/>
                 </FlexLayout>
                 <Button Text="Tới trang thanh toán" HorizontalOptions="Center" HeightRequest="50" x:Name="Checkout_Btn" Clicked="Checkout_Btn_Clicked" WidthRequest="250" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
             </StackLayout>

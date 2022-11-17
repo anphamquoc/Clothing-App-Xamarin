@@ -4,7 +4,17 @@
              x:Class="ClothingApp.Views.Checkout"
              Shell.BackgroundColor="#F77951">
     <Shell.TitleView>
-        <Label Text="Thanh toán" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Image Source="arrow_left.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="TapGestureRecognizer_Tapped"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label Text="Thanh toán" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 40, 0"  VerticalTextAlignment="Center" x:Name="titlePage"/>
+        </StackLayout>
     </Shell.TitleView>
     <ContentPage.Content>
         <Grid Margin="10" RowSpacing="20">
@@ -22,15 +32,13 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Label Text="Tên:" FontSize="16" />
-                        <Label Text="Phạm Quốc Ấn" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label x:Name="name" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
                         <Label Text="Email:" FontSize="16" Grid.Row="1" />
-                        <Label Text="chris@gmail.com" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
-                        <Label Text="Quote:" FontSize="16" Grid.Row="2" />
-                        <Label Text="Không code đời không nể" Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
-                        <Label Text="Nơi ở:" FontSize="16" Grid.Row="3" />
-                        <Label Text="Nghĩa Phương, Tư Nghĩa, Quảng Ngãi" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
-                        <Label Text="Số điện thoại:" FontSize="16" Grid.Row="4" />
-                        <Label Text="+0123456789" LineBreakMode="TailTruncation" Grid.Row="4" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label x:Name="email" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Nơi ở:" FontSize="16" Grid.Row="2" />
+                        <Label x:Name="address" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Số điện thoại:" FontSize="16" Grid.Row="3" />
+                        <Label x:Name="phoneNumber" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
                     </Grid>
                 </Frame>
             </StackLayout>
@@ -49,12 +57,12 @@
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Label Text="Phí vận chuyển:" FontSize="16" />
-                        <Label Text="$50" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="50.000" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
                         <Label Text="Giá tiền sản phẩm:" FontSize="16" Grid.Row="1" />
-                        <Label Text="$740" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label x:Name="productCost" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
                         <BoxView HeightRequest="1" Color="#F4F4F4" Grid.Row="2" Grid.ColumnSpan="2"/>
                         <Label Text="Tổng cộng:" FontSize="16" Grid.Row="3" />
-                        <Label Text="$790" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label x:Name="total" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
                     </Grid>
                 </Frame>
             </StackLayout>

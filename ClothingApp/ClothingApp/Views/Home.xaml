@@ -4,107 +4,132 @@
              x:Class="ClothingApp.Views.Home"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <Grid RowSpacing="30">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="20" />
-            </Grid.ColumnDefinitions>
-            <StackLayout Grid.Row="1" Grid.Column="1">
-                <Label Text="Khám phá" TextColor="Black" FontSize="40" FontAttributes="Bold" />
-                <Label Text="bộ đồ tốt nhất cho bạn" FontSize="25" TextColor="#ACAAA9" />
-            </StackLayout>
-            <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="30" BorderColor="#EEEEF0">
-                <SearchBar />
-            </Frame>
-            <Grid Grid.Row="3" Grid.Column="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"  />
-                    <ColumnDefinition Width="*"  />
-                    <ColumnDefinition Width="*"  />
-                    <ColumnDefinition Width="*"  />
-                </Grid.ColumnDefinitions>
-                <Frame Padding="0" HasShadow="False">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FilterItem}" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout Grid.Column="0">
-                        <Image Source="dress_icon.png" HeightRequest="60" WidthRequest="60" />
-                        <Label Text="Dress" HorizontalOptions="Center" />
-                    </StackLayout >
+        <ScrollView Padding="20">
+            <StackLayout>
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label Text="Khám phá" TextColor="Black" FontSize="40" FontAttributes="Bold" />
+                    <Label Text="bộ đồ tốt nhất cho bạn" FontSize="25" TextColor="#ACAAA9" />
+                </StackLayout>
+                <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="30" BorderColor="#EEEEF0">
+                    <SearchBar />
                 </Frame>
-                <Frame Padding="0" HasShadow="False" Grid.Column="1">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FilterItem}" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout Grid.Column="0">
-                        <Image Source="pant_icon.png" HeightRequest="60" WidthRequest="60" />
-                        <Label Text="Pants" HorizontalOptions="Center" />
-                    </StackLayout >
-                </Frame>
-                <Frame Padding="0" HasShadow="False" Grid.Column="2">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FilterItem}" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout Grid.Column="0">
-                        <Image Source="shirt_icon.png" HeightRequest="60" WidthRequest="60" />
-                        <Label Text="Shirt" HorizontalOptions="Center" />
-                    </StackLayout >
-                </Frame>
-                <Frame Padding="0" HasShadow="False" Grid.Column="3">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding FilterItem}" />
-                    </Frame.GestureRecognizers>
-                    <StackLayout Grid.Column="0">
-                        <Image Source="long_sleeve_shirt_icon.png" HeightRequest="60" WidthRequest="60" />
-                        <Label Text="T-Shirt" HorizontalOptions="Center" />
-                    </StackLayout >
-                </Frame>
-            </Grid>
-            <StackLayout Grid.Row="4" Grid.Column="1">
-                <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
-                    <Label Text="Hàng mới về" FontSize="24" FontAttributes="Bold" TextColor="Black" />
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Xem tất cả"
+                <!--<Grid Grid.Row="3" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="*"  />
+                    </Grid.ColumnDefinitions>
+                    <Frame Padding="0" HasShadow="False">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterItem}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Grid.Column="0">
+                            <Image Source="dress_icon.png" HeightRequest="60" WidthRequest="60" />
+                            <Label Text="Dress" HorizontalOptions="Center" />
+                        </StackLayout >
+                    </Frame>
+                    <Frame Padding="0" HasShadow="False" Grid.Column="1">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterItem}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Grid.Column="0">
+                            <Image Source="pant_icon.png" HeightRequest="60" WidthRequest="60" />
+                            <Label Text="Pants" HorizontalOptions="Center" />
+                        </StackLayout >
+                    </Frame>
+                    <Frame Padding="0" HasShadow="False" Grid.Column="2">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterItem}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Grid.Column="0">
+                            <Image Source="shirt_icon.png" HeightRequest="60" WidthRequest="60" />
+                            <Label Text="Shirt" HorizontalOptions="Center" />
+                        </StackLayout >
+                    </Frame>
+                    <Frame Padding="0" HasShadow="False" Grid.Column="3">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding FilterItem}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout Grid.Column="0">
+                            <Image Source="long_sleeve_shirt_icon.png" HeightRequest="60" WidthRequest="60" />
+                            <Label Text="T-Shirt" HorizontalOptions="Center" />
+                        </StackLayout >
+                    </Frame>
+                </Grid>-->
+                <StackLayout Margin="0, 20" Spacing="15">
+                    <Label Text="Các chức năng chính" FontSize="24" TextColor="Black" FontAttributes="Bold" />
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
+                        <StackLayout Orientation="Vertical" x:Name="shopping">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="shopping_icon_color.png" WidthRequest="30" />
+                            <Label Text="Mua sắm" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="cart_icon_color.png" WidthRequest="30" />
+                            <Label Text="Giỏ hàng" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="order_icon_color.png" WidthRequest="30" />
+                            <Label Text="Đơn đặt hàng" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_3" />
+                            </StackLayout.GestureRecognizers>
+                            <Image Source="user_icon_color" WidthRequest="30" />
+                            <Label Text="Người dùng" HorizontalTextAlignment="Center" />
+                        </StackLayout>
+                    </FlexLayout>
+                </StackLayout>
+                <StackLayout Grid.Row="3" Grid.Column="1">
+                    <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                        <Label Text="Hàng mới về" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Xem tất cả"
                                     TextColor="#7E7E7E"
                                       FontSize="16"
                                       >
-                                    <Span.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding TapCommand}" />
-                                    </Span.GestureRecognizers>
-                                </Span>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
-                </FlexLayout>
-                <CollectionView x:Name="navigationCarousel" ItemsLayout="VerticalGrid, 2" SelectionMode="Single" SelectionChanged="navigationCarousel_SelectionChanged">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <ContentView>
-                                <Frame Padding="0" HasShadow="False" BackgroundColor="#FBFBFD" Margin="5" IsClippedToBounds="True" CornerRadius="5">
-                                    <StackLayout>
-                                        <Frame HasShadow="False" Padding="0" WidthRequest="100" HeightRequest="100">
-                                            <Image Source="dress_01.jfif" Aspect="AspectFill" />
-                                        </Frame>
-                                        <Label Text="Đầm" TextColor="#808080" HorizontalOptions="Center" FontSize="18" />
-                                        <Label Text="150$" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" />
-                                    </StackLayout>
-                                </Frame>
-                            </ContentView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-            <!--<FlexLayout Grid.Row="3" Grid.Column="1" JustifyContent="SpaceBetween">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding TapCommand}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </FlexLayout>
+                    <CollectionView x:Name="navigationCarousel" SelectionMode="Single" SelectionChanged="navigationCarousel_SelectionChanged" HeightRequest="200">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <ContentView>
+                                    <Frame Padding="0" HasShadow="False" BackgroundColor="#FBFBFD" Margin="5" IsClippedToBounds="True" CornerRadius="5">
+                                        <StackLayout>
+                                            <Frame HasShadow="False" Padding="0" WidthRequest="100" HeightRequest="100">
+                                                <Image Source="{Binding ImgUrl}" Aspect="AspectFill" />
+                                            </Frame>
+                                            <Label Text="{Binding Name}" TextColor="#808080" HorizontalOptions="Center" FontSize="18" />
+                                            <Label Text="{Binding Price, StringFormat='{0:#,0.#}'}" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" />
+                                        </StackLayout>
+                                    </Frame>
+                                </ContentView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+                <!--<FlexLayout Grid.Row="3" Grid.Column="1" JustifyContent="SpaceBetween">
                 <StackLayout>
                     <Image Source="dress_icon.png" HeightRequest="60" WidthRequest="60" />
                     <Label Text="Dress" HorizontalOptions="Center" />
@@ -122,6 +147,24 @@
                     <Label Text="Dress" HorizontalOptions="Center" />
                 </StackLayout>
             </FlexLayout>-->
-        </Grid>
+                <StackLayout>
+                    <Label Text="Tại sao lựa chọn chúng tôi" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="tick_icon_color.png" VerticalOptions="Center" WidthRequest="25"  />
+                            <Label Text="Quần áo hợp thời trang, nhiều mẫu mã" VerticalOptions="Center" FontSize="16" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="tick_icon_color.png"  VerticalOptions="Center" WidthRequest="25" />
+                            <Label Text="Giá cả phải chăng, tốt nhất trên thị trường" VerticalOptions="Center" FontSize="16" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Spacing="10">
+                            <Image Source="tick_icon_color.png" VerticalOptions="Center" WidthRequest="25" />
+                            <Label Text="Thanh toán nhanh chóng, tiện lợi" VerticalOptions="Center" FontSize="16" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
