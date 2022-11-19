@@ -6,6 +6,9 @@ namespace ClothingApp
 {
     public partial class App : Application
     {
+        public string UserId { get; set; }
+        public string CartId { get; set; }
+        public string Role { get; set; }
         public App()
         {
             InitializeComponent();

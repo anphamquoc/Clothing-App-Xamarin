@@ -37,7 +37,27 @@
         <!--<ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Home}" Icon="heart.png" Route="Favourite" />-->
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Order}" Icon="order_icon.png" Route="Order" Title="Đơn hàng" />
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:User}" Icon="user.png" Route="User" Title="Người dùng" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Admin}" Icon="admin_icon.png" Route="Admin" Title="Admin" x:Name="adminPage" />
     </TabBar>
+
+    <TabBar Route="EditProduct">
+        <ShellContent ContentTemplate="{DataTemplate views:AdminEditProduct}" />
+    </TabBar>
+    <TabBar Route="AdminProductInformation">
+        <ShellContent ContentTemplate="{DataTemplate views:AdminProductInformation}" />
+    </TabBar>
+
+    <TabBar Route="AdminOrderDetail">
+        <ShellContent ContentTemplate="{DataTemplate views:AdminOrderDetail}" />
+    </TabBar>
+    
+    <TabBar Title="Admin Page" Route="Admin" Shell.FlyoutBehavior="Disabled" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:AdminUser}" Icon="user_icon.png" Route="AdminUser" Title="Người dùng" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:AdminProduct}" Icon="product_icon.png" Route="AdminProduct" Title="Sản phẩm" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:AdminOrder}" Icon="order_icon.png" Route="AdminOrder" Title="Đơn hàng" />
+        <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:MainPageHome}" Icon="home.png" Title="Trang chủ" Route="AdminHome" />
+    </TabBar>
+
     <!--</TabBar>-->
     <!--<FlyoutItem Title="Clothing Shop" Shell.TabBarIsVisible="False" FlyoutDisplayOptions="AsMultipleItems">
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Login}" Title="Login" />

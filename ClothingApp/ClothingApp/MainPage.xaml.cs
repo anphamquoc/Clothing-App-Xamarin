@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using System.Data.SqlClient;
 using ClothingApp.Model;
 
 namespace ClothingApp
@@ -15,11 +14,11 @@ namespace ClothingApp
         public MainPage()
         {
             InitializeComponent();
-            //Connect connect = new Connect();
-            //SqlConnection sqlConnection = connect.Connection;
 
-            //sqlConnection.Open();
-
+            MessagingCenter.Subscribe<Object, string>(this, "sendRole", (sender, args) =>
+            {
+                adminPage.IsVisible = args == "admin";
+            });
         }
     }
 }

@@ -48,13 +48,13 @@ namespace ClothingApp.Views
                 Password = passwordString
             });
 
-            UserVM userVM = new ConvertObject<UserVM>().ConvertObjectToData(apiResponse.data);
-
             if (!apiResponse.success)
             {
                 await DisplayAlert("Thông báo", apiResponse.message, "OK");
                 return;
             }
+
+            UserVM userVM = new ConvertObject<UserVM>().ConvertObjectToData(apiResponse.data);
 
             ((App)App.Current).UserId = userVM.id.ToString();
             ((App)App.Current).Role = userVM.Role;
