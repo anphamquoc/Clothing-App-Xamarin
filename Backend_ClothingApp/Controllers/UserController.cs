@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Backend_ClothingApp.Helpers;
+using Backend_ClothingApp.Models;
+using Backend_ClothingApp.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Backend_ClothingApp.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Backend_ClothingApp.Models;
-using Backend_ClothingApp.Helpers;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Backend_ClothingApp.Controllers
 {
@@ -16,145 +14,137 @@ namespace Backend_ClothingApp.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly SecurePasswordHasher securePasswordHasher = new SecurePasswordHasher();
-        private readonly MyDbContext _context;
-
-        public UserController(MyDbContext context)
+        private readonly IUserRepository _userRepository;
+        public UserController(IUserRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<User> users = _context.Users.ToList();
-            return Ok(new ApiResponse { 
-                Success = true,
-                Data = users
-            });
+            try
+            {
+                return Ok(new ApiResponse(true, _userRepository.GetAll()));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
+            }
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetUserById(string id)
-        {
-            User user = _context.Users.ToList().SingleOrDefault(user => user.id == Guid.Parse(id));
-
-            if(user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user);
-        }
-
-        [HttpPost("login")]
-        public IActionResult Login(LoginModel userBody)
+        public IActionResult GetById(string id)
         {
             try
             {
-                User user = _context.Users.SingleOrDefault(user => user.Username == userBody.Username);
-
-                if(user == null)
+                UserVM userVM = _userRepository.GetById(id);
+                if (userVM == null)
                 {
-                    return NotFound(new { 
-                        Success = false,
-                        Message = "Sai tài khoản"
-                    });
+                    return NotFound(new ApiResponse(false, "Không tìm thấy người dùng"));
                 }
 
-                if (!securePasswordHasher.Verify(userBody.Password, user.Password))
-                {
-                    return StatusCode(StatusCodes.Status404NotFound ,new
-                    {
-                        Success = false,
-                        Message = "Sai mật khẩu"
-                    });
-                }
-
-                return Ok(new { 
-                    Success = true,
-                    Data = user
-                });
+                return Ok(new ApiResponse(true, userVM));
             }
             catch(Exception ex)
             {
-                return BadRequest(new ApiResponse {
-                    Success = false,
-                    Message = ex.Message
-                });
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
             }
         }
 
-        [HttpPost("register")]
-        public IActionResult Register(RegisterModel userBody)
+        [HttpPost("Login")]
+        public IActionResult Login(LoginModel loginModel)
         {
             try
             {
-                User user = _context.Users.SingleOrDefault(user => user.Username == userBody.Username);
+                UserVM userVM = _userRepository.Login(loginModel);
 
-                if (user != null)
+                if(userVM == null)
                 {
-                    return BadRequest(new ApiResponse
-                    {
-                        Success = true,
-                        Message = "Đã có người dùng với tên đăng nhập này"
-                    });
+                    return StatusCode(StatusCodes.Status404NotFound, new ApiResponse(false, "Sai tài khoản hoặc mật khẩu"));
                 }
 
-                string hashPassword = securePasswordHasher.Hash(userBody.Password);
+                return Ok(new ApiResponse(true, userVM));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
+            }
+        }
 
-                user = new User {
-                    Username = userBody.Username,
-                    Password = hashPassword
-                };
+        [HttpPost("Register")]
+        public IActionResult Register(RegisterModel registerModel)
+        {
+            try
+            {
+                UserVM userVM = _userRepository.Register(registerModel);
+                if(userVM == null)
+                {
+                    return StatusCode(StatusCodes.Status302Found, new ApiResponse(false, "Đã có người dùng với tài khoản này"));
+                }
 
-                _context.Users.Add(user);
-                _context.SaveChanges();
+                return Ok(new ApiResponse(true, userVM));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
+            }
+        }
 
-                return Ok(new {
-                    Success = true,
-                    Data = user
-                });
+        [HttpPut("{userId}")]
+        public IActionResult UpdateUser(string userId, UpdateUserModel updateUserModel)
+        {
+            try
+            {
+                bool check = _userRepository.Update(userId, updateUserModel);
+                if(!check)
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, new ApiResponse(false, "Update thất bại"));
+                }
+
+                return Ok(new ApiResponse(true, "Update thành công"));
             }
             catch (Exception ex)
             {
-                return BadRequest(new ApiResponse{ 
-                    Success = false,
-                    Message = ex.Message
-                });
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
             }
         }
 
-        [HttpPut("{id}")]
-        public IActionResult updateUserById(string id, UpdateUserModel userBody)
+        [HttpPut("ChangePassword/{userId}")]
+        public IActionResult UpdatePassword(string userId, ChangePasswordUserModel changePasswordUserModel)
         {
             try
             {
-                User user = _context.Users.ToList().SingleOrDefault(user => user.id.ToString() == id);
-
-                if (user == null)
+                bool check = _userRepository.ChangePassword(userId, changePasswordUserModel);
+                if (!check)
                 {
-                    return BadRequest(new ApiResponse {
-                        Success = false,
-                        Message = $"Không có user với id={id} này"
-                    });
+                    return StatusCode(StatusCodes.Status400BadRequest, new ApiResponse(false, "Mật khẩu sai"));
                 }
 
-                user.PhoneNumber = userBody.PhoneNumber;
-                user.Address = userBody.Address;
-                user.Email = userBody.Email;
+                return Ok(new ApiResponse(true, "Đổi mật khẩu thành công"));
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
+            }
+        }
 
-                _context.SaveChanges();
+        [HttpDelete("{userId}")]
+        public IActionResult DeleteUser(string userId)
+        {
+            try
+            {
+                bool check = _userRepository.Delete(userId);
+                if (!check)
+                {
+                    return StatusCode(StatusCodes.Status404NotFound, new ApiResponse(false, "Không tìm thấy người dùng"));
+                }
 
-                return Ok(new ApiResponse
-                { 
-                    Success = true,
-                    Data = user
-                });
+                return Ok(new ApiResponse(true, "Xóa thành công"));
             }
             catch(Exception ex)
             {
-                return BadRequest(ex);
+                return StatusCode(StatusCodes.Status500InternalServerError, new ApiResponse(false, ex.Message));
             }
         }
     }
