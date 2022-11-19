@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:ClothingApp.Helpers"
+             x:Class="ClothingApp.Views.AdminOrder"
+              Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <Label Text="Tất cả đơn hàng" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:ChangeColorConverter x:Key="changeColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ListView Grid.Row="0" x:Name="listItems" RowHeight="100" ItemTapped="listItems_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Xóa"  Command="{Binding Path=BindingContext.DeleteOrderCommand, Source={x:Reference listItems}}" CommandParameter="{Binding .}" />
+                        </ViewCell.ContextActions>
+                        <Grid Padding="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                <Frame Padding="0">
+                                    <Image Source="{Binding OrderDetails[0].Product.ImgUrl}" WidthRequest="100" Aspect="AspectFill" />
+                                </Frame>
+                                <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Start">
+                                    <Label Text="{Binding FullName}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                    <Label Text="{Binding CreatedAt}" TextColor="#808080" FontSize="14" LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </StackLayout>
+                            <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="End">
+                                <Label Text="{Binding Total, StringFormat='{0:#,0.#}'}" FontSize="20" FontAttributes="Bold" HorizontalOptions="End" TextColor="Black" />
+                                <!--Success: 22bb33-->
+                                <!--Delivering: FF3535-->
+                                <Label Text="{Binding Status}" HorizontalOptions="End" FontAttributes="Bold" TextColor="{Binding Status, Converter={StaticResource changeColorConverter}}"  />
+                            </StackLayout>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

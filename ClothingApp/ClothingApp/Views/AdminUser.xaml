@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.AdminUser"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <Label Text="Thông tin tất cả người dùng" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame Padding="0" CornerRadius="30" BorderColor="#EEEEF0" Margin="5">
+                <SearchBar x:Name="SearchBar" TextChanged="SearchBar_TextChanged" Placeholder="Tìm kiếm người dùng" />
+            </Frame>
+            <Label x:Name="searchResult" Margin="5" Text="Tất cả người dùng" FontSize="20" FontAttributes="Bold" TextColor="Black" />
+            <ListView Grid.Row="0" x:Name="listItems" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Xóa" Command="{Binding Path=BindingContext.DeleteUserCommand, Source={x:Reference listItems}}" CommandParameter="{Binding .}" />
+                            </ViewCell.ContextActions>
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout VerticalOptions="Center" Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Start">
+                                        <Label Text="{Binding FullName}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                        <Label Text="{Binding CreatedAt}" TextColor="#808080" FontSize="14" LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="End">
+                                    <Label Text="{Binding Username}" FontSize="20" FontAttributes="Bold" HorizontalOptions="End" TextColor="Black" />
+                                    <!--Success: 22bb33-->
+                                    <!--Delivering: FF3535-->
+                                    <Label Text="{Binding Role}" HorizontalOptions="End" FontAttributes="Bold" TextColor="#ff3535"  />
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+            </ContentPage.Content>
+</ContentPage>

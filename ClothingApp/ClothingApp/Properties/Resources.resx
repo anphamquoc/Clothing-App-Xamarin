@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="db_conn" xml:space="preserve">
-    <value>Server=172.20.8.183;Port=1234;Database=clothingdb;Uid=root;Pwd=helloanhan</value>
+  <data name="demo_api_url" xml:space="preserve">
+    <value>http://localhost:16934</value>
+  </data>
+  <data name="web_api_url" xml:space="preserve">
+    <value>http://clothingappapi.somee.com</value>
   </data>
 </root>

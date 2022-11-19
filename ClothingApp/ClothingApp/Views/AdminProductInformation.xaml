@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClothingApp.Views.AdminProductInformation"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Image Source="arrow_left.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="TapGestureRecognizer_Tapped"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label Text="Thông tin sản phẩm" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 40, 0"  VerticalTextAlignment="Center" x:Name="titlePage"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Content>
+        <Grid Margin="0, 20, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Frame Padding="0" HasShadow="False">
+                <Image x:Name="image" Source="dress_01.jfif" Aspect="AspectFit" />
+            </Frame>
+            <Frame Grid.Row="1" Padding="20" CornerRadius="40" BorderColor="#FFE9E3">
+                <Grid RowSpacing="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <StackLayout Orientation="Horizontal" >
+                        <Label x:Name="name" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                        <Label x:Name="price" HorizontalOptions="EndAndExpand" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                    </StackLayout>
+                    <Label Grid.Row="1" x:Name="description" TextColor="#808080"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End">
+                        <Button Text="Sửa sản phẩm" HorizontalOptions="Center" HeightRequest="50" x:Name="EditProduct" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" Clicked="EditProduct_Clicked" />
+                        <Button Text="Xóa sản phẩm" HorizontalOptions="Center" HeightRequest="50" x:Name="DeleteProduct" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" Clicked="DeleteProduct_Clicked" />
+                        <!--<Button Text="Quay lại" HorizontalOptions="Center" x:Name="BackToHome_btn" Clicked="BackToHome_btn_Clicked" HeightRequest="50" CornerRadius="60"  BackgroundColor="#FFE9E3" TextColor="#F77951" />-->
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

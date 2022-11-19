@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:ClothingApp.Helpers"
+             x:Class="ClothingApp.Views.AdminOrderDetail"
+             Shell.BackgroundColor="#F77951">
+    <Shell.TitleView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Image Source="arrow_left.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer
+                Tapped="TapGestureRecognizer_Tapped"
+                NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <Label Text="Thông tin chi tiết hóa đơn" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Margin="0, 0, 40, 0"  VerticalTextAlignment="Center" x:Name="titlePage"/>
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <helpers:TotalPriceConverter x:Key="totalPriceConvert" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid Margin="0, 0, 0, 10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="0" Margin="5, 0">
+                <Label Text="Thông tin khách hàng" FontSize="20" TextColor="Black" FontAttributes="Bold" Margin="0,5,0,0" />
+                <Frame BorderColor="#F4F4F6" HasShadow="False" CornerRadius="10">
+                    <Grid ColumnSpacing="30" RowSpacing="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Tên:" FontSize="16" />
+                        <Label Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" x:Name="fullName" />
+                        <Label Text="Email:" FontSize="16" Grid.Row="1" />
+                        <Label x:Name="email" Grid.Row="1" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Nơi ở:" FontSize="16" Grid.Row="2" />
+                        <Label x:Name="address" LineBreakMode="TailTruncation" Grid.Row="2" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                        <Label Text="Số điện thoại:" FontSize="16" Grid.Row="3" />
+                        <Label x:Name="phoneNumber" LineBreakMode="TailTruncation" Grid.Row="3" Grid.Column="1" FontSize="16" HorizontalTextAlignment="End" FontAttributes="Bold" TextColor="Black" />
+                    </Grid>
+                </Frame>
+            </StackLayout>
+
+            <ListView Grid.Row="1" x:Name="listItems" RowHeight="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <FlexLayout JustifyContent="SpaceBetween" Padding="5" AlignItems="Center">
+                                <StackLayout Orientation="Horizontal">
+                                    <Frame Padding="0" HasShadow="False" IsClippedToBounds="True" >
+                                        <Image Aspect="AspectFill" Source="{Binding Product.ImgUrl}" HorizontalOptions="Center" WidthRequest="100" VerticalOptions="Center" />
+                                    </Frame>
+                                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+                                        <Label Text="{Binding Product.Name}" TextColor="#808080" FontSize="16" LineBreakMode="TailTruncation" WidthRequest="200" />
+                                        <Label Text="{Binding Product.Price, StringFormat='{0:#,0.#}'}" FontSize="16" TextColor="Black" FontAttributes="Bold" />
+                                    </StackLayout>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="SL:" />
+                                        <Label Text="{Binding Quantity}" />
+                                    </StackLayout>
+
+                                    <Label TextColor="Black" FontSize="16" FontAttributes="Bold" Text="{Binding OrderDetail, Converter={StaticResource totalPriceConvert}, StringFormat='{0:#,0.#}'}" />
+                                </StackLayout>
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Grid.Row="2" Spacing="20" Margin="10, 0">
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" AlignItems="Center">
+                    <Label Text="Tổng cộng: " FontSize="16" TextColor="Black" />
+                    <Label x:Name="total" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
+                </FlexLayout>
+                <FlexLayout JustifyContent="SpaceBetween" AlignItems="Center">
+                    <Label Text="Tình trạng: " FontSize="16" TextColor="Black" />
+                    <!--Success: 22bb33-->
+                    <!--Delivering: FF3535-->
+                    <Label x:Name="Status" FontSize="18" TextColor="#FF3535"  FontAttributes="Bold"/>
+                </FlexLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="Center">                
+                    <Button Text="Thay đổi tình trạng đơn hàng" HeightRequest="50" x:Name="ChangeStatus" Clicked="ChangeStatus_Clicked" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" />
+                </StackLayout>
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

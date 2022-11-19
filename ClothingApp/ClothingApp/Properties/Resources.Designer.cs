@@ -61,11 +61,20 @@ namespace ClothingApp.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server=172.20.8.183;Port=1234;Database=clothingdb;Uid=root;Pwd=helloanhan.
+        ///   Looks up a localized string similar to http://localhost:16934.
         /// </summary>
-        internal static string db_conn {
+        internal static string demo_api_url {
             get {
-                return ResourceManager.GetString("db_conn", resourceCulture);
+                return ResourceManager.GetString("demo_api_url", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://clothingappapi.somee.com.
+        /// </summary>
+        internal static string web_api_url {
+            get {
+                return ResourceManager.GetString("web_api_url", resourceCulture);
             }
         }
     }
