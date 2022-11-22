@@ -30,7 +30,7 @@
         <ShellContent ContentTemplate="{DataTemplate views:ChangePassword}" />
     </TabBar>
     <!--<TabBar Route="Home">-->
-    <TabBar Title="My Tab App" Route="" Shell.FlyoutBehavior="Disabled" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
+    <TabBar Title="My Tab App" Route="" Shell.FlyoutBehavior="Disabled" FlyoutDisplayOptions="AsMultipleItems" Shell.BackgroundColor="#F6F6F6"  Shell.TabBarIsVisible="True" Shell.TabBarTitleColor="#1E90FF">
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Home}" Icon="home.png" Route="Home" Title="Trang chủ" />
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Shopping}" Icon="shopping.png" Route="Shopping" Title="Mua sắm" />
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:Cart}" Icon="cart.png" Route="Cart" Title="Giỏ hàng" />
@@ -50,8 +50,8 @@
     <TabBar Route="AdminOrderDetail">
         <ShellContent ContentTemplate="{DataTemplate views:AdminOrderDetail}" />
     </TabBar>
-    
-    <TabBar Title="Admin Page" Route="Admin" Shell.FlyoutBehavior="Disabled" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
+
+    <TabBar Title="Admin Page" Route="Admin" Shell.FlyoutBehavior="Disabled" Shell.TabBarTitleColor="#1E90FF" Shell.BackgroundColor="#F6F6F6" FlyoutDisplayOptions="AsMultipleItems" Shell.TabBarIsVisible="True">
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:AdminUser}" Icon="user_icon.png" Route="AdminUser" Title="Người dùng" />
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:AdminProduct}" Icon="product_icon.png" Route="AdminProduct" Title="Sản phẩm" />
         <ShellContent IsTabStop="True" ContentTemplate="{DataTemplate views:AdminOrder}" Icon="order_icon.png" Route="AdminOrder" Title="Đơn hàng" />
