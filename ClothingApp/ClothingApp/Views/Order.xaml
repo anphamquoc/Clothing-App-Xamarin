@@ -19,15 +19,15 @@
                     <ViewCell>
                         <Grid Padding="10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
                             <StackLayout VerticalOptions="Center" Orientation="Horizontal">
                                 <Frame Padding="0">
                                     <Image Source="{Binding OrderDetails[0].Product.ImgUrl}" WidthRequest="100" Aspect="AspectFill" />
                                 </Frame>
                                 <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Start">
-                                    <Label Text="{Binding FullName}" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                                    <Label Text="{Binding OrderDetails[0].Product.Name}" FontSize="20" TextColor="Black" FontAttributes="Bold" LineBreakMode="TailTruncation" />
                                     <Label Text="{Binding CreatedAt}" TextColor="#808080" FontSize="14" LineBreakMode="TailTruncation" />
                             </StackLayout>
                             </StackLayout>

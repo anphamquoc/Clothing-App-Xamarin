@@ -32,12 +32,14 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <StackLayout Orientation="Horizontal" >
-                        <Label x:Name="name" FontSize="20" TextColor="Black" FontAttributes="Bold" />
-                        <Label x:Name="price" HorizontalOptions="EndAndExpand" FontSize="20" TextColor="Black" FontAttributes="Bold" />
-                    </StackLayout>
-                    <Label Grid.Row="1" x:Name="description" TextColor="#808080"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="name" Grid.Row="0" Grid.Column="0" FontSize="20" TextColor="Black" FontAttributes="Bold" LineBreakMode="TailTruncation" />
+                    <Label x:Name="price" Grid.Row="0" Grid.Column="1" HorizontalOptions="EndAndExpand" FontSize="20" TextColor="Black" FontAttributes="Bold" />
+                    <Label Grid.Row="1" x:Name="description" Grid.ColumnSpan="2" TextColor="#808080"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End" Grid.ColumnSpan="2">
                         <Button Text="Thêm vào giỏ hàng" HorizontalOptions="Center" HeightRequest="50" x:Name="AddToCart_btn" WidthRequest="170" CornerRadius="60" TextColor="White" BackgroundColor="#F77951" Clicked="AddToCart_btn_Clicked" />
                         <Button Text="Quay lại" HorizontalOptions="Center" x:Name="BackToHome_btn" Clicked="BackToHome_btn_Clicked" HeightRequest="50" WidthRequest="150" CornerRadius="60"  BackgroundColor="#FFE9E3" TextColor="#F77951" />
                     </StackLayout>

@@ -120,7 +120,7 @@
                                             <Frame HasShadow="False" Padding="0" WidthRequest="100" HeightRequest="100">
                                                 <Image Source="{Binding ImgUrl}" Aspect="AspectFill" />
                                             </Frame>
-                                            <Label Text="{Binding Name}" TextColor="#808080" HorizontalOptions="Center" FontSize="18" />
+                                            <Label Text="{Binding Name}" LineBreakMode="TailTruncation" WidthRequest="100" TextColor="#808080" HorizontalOptions="Center" FontSize="18" />
                                             <Label Text="{Binding Price, StringFormat='{0:#,0.#}'}" HorizontalOptions="Center" TextColor="Black" FontAttributes="Bold" FontSize="20" />
                                         </StackLayout>
                                     </Frame>
