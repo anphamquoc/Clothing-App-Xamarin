@@ -7,7 +7,7 @@
         <Label Text="Tất cả sản phẩm" FontSize="20" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
     </Shell.TitleView>
     <ContentPage.Content>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20, 20, 20, 0">
             <Frame Grid.Row="2" Grid.Column="1" Padding="0" CornerRadius="30" BorderColor="#EEEEF0">
                 <SearchBar x:Name="SearchBar" TextChanged="SearchBar_TextChanged" Placeholder="Tìm kiếm sản phẩm" />
             </Frame>

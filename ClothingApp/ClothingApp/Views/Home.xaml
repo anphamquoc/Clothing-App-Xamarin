@@ -4,7 +4,7 @@
              x:Class="ClothingApp.Views.Home"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <ScrollView Padding="20">
+        <ScrollView Padding="20, 20, 20, 0">
             <StackLayout>
                 <StackLayout Grid.Row="1" Grid.Column="1">
                     <Label Text="Khám phá" TextColor="Black" FontSize="40" FontAttributes="Bold" />
