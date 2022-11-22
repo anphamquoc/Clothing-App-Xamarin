@@ -38,6 +38,7 @@ namespace ClothingApp.Views
                 return;
             }
 
+            titlePage.Text = "Sửa sản phẩm";
             ApiResponse apiResponse = await commonInterface._productRepository.GetProductById(ProductId);
             if (apiResponse.success == false)
             {

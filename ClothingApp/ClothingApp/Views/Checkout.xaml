@@ -24,7 +24,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout>
-                <Label Text="Delivery Address" FontSize="24" FontAttributes="Bold" TextColor="Black" />
+                <Label Text="Thông tin vận chuyển" FontSize="24" FontAttributes="Bold" TextColor="Black" />
                 <Frame BorderColor="#F4F4F6" HasShadow="False" CornerRadius="10">
                     <Grid ColumnSpacing="30" RowSpacing="20">
                         <Grid.ColumnDefinitions>
